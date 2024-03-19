@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Online Bookstore</title>
+</head>
+<body>
+  <h1>Online Bookstore</h1>
+  <div id="bookstore"></div>
+
+  <script>
+    // Author constructor function
+    function Author(name, birthYear, nationality) {
+        this.name = name;
+        this.birthYear = birthYear;
+        this.nationality = nationality;
+    }
+
+    // Book constructor function
+    function Book(title, author, genre, price) {
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
+        this.price = price;
+    }
+
+    // Method to get book info
+    Book.prototype.getBookInfo = function() {
+        return `Title: ${this.title}, Author: ${this.author.name}, Genre: ${this.genre}, Price: ${this.price}`;
+    };
+
+
+    function displayBookDetails(book) {
+        const bookInfo = document.createElement('div');
+        bookInfo.textContent = book.getBookInfo();
+        document.getElementById('bookstore').appendChild(bookInfo);
+    }
+
+  
+    const author1 = new Author("Chetan Bhagat", 1974, "indian");
+    const book1 = new Book("The 3 Mistakes of My Life", author1, "Documentry", 15.99);
+
+    const author2 = new Author("Vikram Seth", 1952, "indian");
+    const book2 = new Book("two lives", author2, "Fantasy", 20.99);
+
+    const author3 = new Author("Kiran Desai", 1971, "Indian");
+    const book3 = new Book("The Inheritance of Loss", author3, "Mystery", 12.99);
+
+
+    displayBookDetails(book1);
+    displayBookDetails(book2);
+    displayBookDetails(book3);
+  </script>
+</body>
+</html>
